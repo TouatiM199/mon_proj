@@ -1,0 +1,33 @@
+DO180-Introduction to Containers, Kubernetes, and Red Hat OpenShift
+DO285-Containers, Kubernetes, and Red Hat OpenShift Administration I
+DO380-Red Hat OpenShift Administration II: High Availability
+JB248-Red Hat JBoss Application Administration I
+RH124-Red Hat System Administration I
+RH134-Red Hat System Administration II
+CL210-Red Hat OpenStack Administration II: Infrastructure Configuration for Cloud Administrators
+JB248-Red Hat JBoss Application Administration I
+RH199-RHCSA Rapid Track Course
+JB348-Red Hat JBoss Application Administration II
+AWS-BCSAA-Bootcamp course: AWS Certified Solutions Architect-Associate
+CL110-Red Hat OpenStack Administration I: Core Operations for Cloud Operators
+DO280-Red Hat OpenShift Administration I: Operating a Production Kubernetes Cluster
+DO407-Automation with Ansible
+RH294-Red Hat System Administration III: Linux Automation with Ansible
+DO288-Red Hat OpenShift Administration I
+DO180-Red Hat OpenShift I: Containers & Kubernetes
+RH318-Red Hat Virtualization
+AWS Cloud Practitioner Essentials
+CKAD-Kubernetes for Developpers
+CKA-Kubernetes for Administrors
+RH403-Red Hat Satellite 6 Administration
+Révision des cours RH1243 et RH134
+JB248-Red Hat JBoss Application Administration I
+DO380-Red Hat OpenShift Administration II: High Availability
+DO417-Microsoft Windows Automation with Red Hat Ansible
+AWS Cloud Practitioner Essentials
+Systems Operations on AWS and Exam Readiness
+AWS-SOA: Systems Operations on AWS
+CL310-Red Hat OpenStack Administration III: Networking & Foundations of NFV
+RH342-Red Hat Enterprise Linux Diagnostics & Troubleshooting
+DO447-Advanced Automation: Ansible Best Practices
+Python

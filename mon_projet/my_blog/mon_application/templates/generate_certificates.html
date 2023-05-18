@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Générateur de certificat</title>
+    <!-- Inclure le fichier JavaScript -->
+    "{% load static %}" 
+    <script src="{% static 'JJ/main.js' %}"></script>
+    <!-- Inclure les fichiers CSS de Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    
+    <style>
+		body {
+			background-color: #FFFFFF; /* fond blanc */
+			color: #000000ee; /* texte noir */
+		}
+		h1 {
+			color: #8f0808; /* titre en rouge */
+		}
+        .dropdown select {
+            background-color: #8f0808; /* couleur de fond blanc */
+            color: #FFFFFF; /* couleur de texte noir */
+        }
+        .form-control {
+            background-color: #8f0808; /* couleur de fond blanc */
+            color: #FFFFFF; /* couleur de texte noir */
+        }
+        .btn-primary {
+            background-color: #8f0808;
+            color: #FFFFFF;
+        }
+         /* Changer la couleur de fond et la couleur de texte des champs de date */
+        input[type=date] {
+            background-color: #8f0808; /* fond blanc */
+            color: #FFFFFF; /* texte noir */
+        }
+        
+        
+        /* Changer la taille des champs de date */
+        input[type=date]::-webkit-inner-spin-button,
+        input[type=date]::-webkit-calendar-picker-indicator {
+        font-size: 160px;
+        width: 24px;
+        height: 24px;
+        }
+        body{
+			background-image: url("{% static 'mon_logo.png' %}");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+		}
+         /* Changer la taille des champs de date */
+         input[type="date"] {
+            font-size: 1.2rem; /* Taille du texte */
+            padding: 0.375rem 0.75rem; /* Padding haut/bas, gauche/droite */
+            line-height: 1.5; /* Hauteur de ligne */
+            border-radius: 0.25rem; /* Bord arrondi */
+        }
+        
+         
+	</style>
+</head>
+
+
+
+<body>
+    <h1>Générateur de certificat</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}     
+        <div class="dropdown">
+        <label for="instructeur">Choisissez un instructeur :</label>
+        <select name="instructeur" id="instructeur_id">
+            {% for instructeur in instructeurs %}
+                <option value="{{instructeur.id}}">{{instructeur.nom}}</option>
+            {% endfor %}
+           
+        </select>
+        
+        </div> 
+        
+        <div class="dropdown">
+        <label for="cour">Choisissez un cour :</label>
+        <select name="cour" id="cour">
+            {% for cour in cours %}
+                <option value="{{ cour.id|escape }}">{{ cour.nom|safe }}</option>
+            {% endfor %}    
+                          
+        </select>
+        <input type="text" name="new_cour_name" id="new_cour_name" placeholder="Nom du nouveau cour" style="display: none;">
+            <script>
+                document.getElementById('cour').addEventListener('change', function() {
+                    if (this.value === '__input__') {
+                        document.getElementById('new_cour_name').style.display = 'block';
+                    } else {
+                        document.getElementById('new_cour_name').style.display = 'none';
+                    }
+                });
+            </script>
+        </div>      
+        
+        <br><br>
+        <label for="CertificateTemplate">Choisissez un certificat :</label>
+        <select class="form-control" id="templateSelect" name="template_name">
+            {% for template_file in cert_templates %}
+              <option value="{{ template_file }}">{{ template_file }}</option>
+            {% endfor %}
+          </select>  
+        
+        <label for="excel_file">Sélectionnez le fichier Excel du nom participants:</label>
+        <input type="file" name="excel_file" required>
+        <br><br>
+        
+        
+        <!-- Champs de date de début et de fin -->
+        <div class="form-group">
+            <label for="start_date">Date de début formation:</label>
+            <input type="date" name="start_date" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="end_date">Date de fin formation:</label>
+            <input type="date" name="end_date" class="form-control" required>
+        </div>
+        <!-- Bouton de soumission -->
+        <button type="submit" class="btn btn-primary btn-rounded" style="background-color: #8f0808;">Générer les certificats</button>
+
+    </form>
+    
+    {% if certificates %}
+    <h2>Liste des certificats générés:</h2>
+    <ul>
+        {% for certificate in certificates %}
+        <li><a href="{{ certificate.url }}" target="_blank">{{ certificate.name }}</a></li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    <!-- Inclure les fichiers JavaScript de Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <!-- Inclure le fichier JavaScript -->
+    
+</body>
+</html>
