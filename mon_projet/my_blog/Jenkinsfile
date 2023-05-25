@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Clonage du référentiel') {
             steps {
-                git 'https://github.com/votre-utilisateur/votre-repo.git'
+                git 'https://github.com/TouatiM199/mon_proj.git'
             }
         }
         
