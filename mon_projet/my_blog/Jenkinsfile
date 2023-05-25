@@ -1,16 +1,30 @@
-
-Jenkinsfile (Declarative Pipeline)
-
-/* Requires the Docker Pipeline plugin */
 pipeline {
-    agent { docker { image 'python:3.10.7-alpine' } }
+    agent any
+    
     stages {
-        stage('build') {
+        stage('Clonage du référentiel') {
             steps {
-                sh 'python --version'
+                git 'https://github.com/votre-utilisateur/votre-repo.git'
+            }
+        }
+        
+        stage('Build') {
+            steps {
+                // Ajoutez les étapes de build ici
+            }
+        }
+        
+        stage('Tests') {
+            steps {
+                // Ajoutez les étapes de tests ici
+            }
+        }
+        
+        stage('Déploiement') {
+            steps {
+                // Ajoutez les étapes de déploiement ici
             }
         }
     }
 }
-
 
